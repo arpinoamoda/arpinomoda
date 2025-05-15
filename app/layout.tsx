@@ -13,29 +13,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Arpinomode – Luxury Apparel by Mina Ely",
+  title: "Arpinomoda – Luxury Apparel by Mina Ely",
   description:
-    "Discover Mina Ely’s luxury style at Arpinomode. Explore fashion crafted for sophisticated expression.",
+    "Discover Mina Ely’s luxury style at Arpinomoda. Explore fashion crafted for sophisticated expression.",
   keywords: [
-    "arpinomode",
+    "arpinomoda",
     "Mina Ely",
     "luxury fashion",
     "designer apparel",
     "modern streetwear",
   ],
-  metadataBase: new URL("https://www.arpinomode.ca"),
+  metadataBase: new URL("https://www.arpinomoda.ca"),
   openGraph: {
-    title: "Arpinomode – Luxury Apparel by Mina Ely",
+    title: "Arpinomoda – Luxury Apparel by Mina Ely",
     description:
-      "Discover Mina Ely’s luxury style at Arpinomode. Explore fashion crafted for sophisticated expression.",
-    url: "https://www.arpinomode.ca",
-    siteName: "Arpinomode",
+      "Discover Mina Ely’s luxury style at Arpinomoda. Explore fashion crafted for sophisticated expression.",
+    url: "https://www.arpinomoda.ca",
+    siteName: "Arpinomoda",
     images: [
       {
         url: "/images/bnr-logo.png",
         width: 1200,
         height: 630,
-        alt: "Mina Ely designer fashion – Arpinomode",
+        alt: "Mina Ely designer fashion – Arpinomoda",
       },
     ],
     locale: "en_US",
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arpinomode – Luxury Apparel by Mina Ely",
+    title: "Arpinomoda – Luxury Apparel by Mina Ely",
     description:
-      "Explore Mina Ely’s elegant designs exclusively at Arpinomode.",
+      "Explore Mina Ely’s elegant designs exclusively at Arpinomoda.",
     images: ["/images/bnr-logo.png"],
   },
   alternates: {
-    canonical: "https://www.arpinomode.ca",
+    canonical: "https://www.arpinomoda.ca",
   },
 };
 
