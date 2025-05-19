@@ -1,6 +1,9 @@
 [site]
-bucket = "./out"
+bucket = "./.cloudflare/output/static"
 compatibility_date = "2023-12-01"
 
 [build]
-command = "npm run build"
+command = "npm run pages:build"
+
+[compatibility_flags]
+nodejs_compat = true
