@@ -1,21 +1,48 @@
-import '@/styles/global.css';
+import type { Metadata } from 'next';
+import './globals.css';
 
-import clsx from 'clsx';
-import { Inter } from 'next/font/google';
+export const metadata: Metadata = {
+  title: 'Arpinomoda – Luxury Apparel by Mina Ely',
+  description:
+    'Discover Mina Ely’s luxury style at Arpinomoda. Explore fashion crafted for sophisticated expression.',
+  keywords: ['arpinomoda', 'Mina Ely', 'luxury fashion', 'designer apparel', 'modern streetwear'],
+  metadataBase: new URL('https://www.arpinomoda.ca'),
+  openGraph: {
+    title: 'Arpinomoda – Luxury Apparel by Mina Ely',
+    description:
+      'Discover Mina Ely’s luxury style at Arpinomoda. Explore fashion crafted for sophisticated expression.',
+    url: 'https://www.arpinomoda.ca',
+    siteName: 'Arpinomoda',
+    images: [
+      {
+        url: '/images/bnr-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Mina Ely designer fashion – Arpinomoda',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Arpinomoda – Luxury Apparel by Mina Ely',
+    description: 'Explore Mina Ely’s elegant designs exclusively at Arpinomoda.',
+    images: ['/images/bnr-logo.png'],
+  },
+  alternates: {
+    canonical: 'https://www.arpinomoda.ca',
+  },
+};
 
-const fontFamily = Inter({ subsets: ['latin'], variable: '--font-primary' });
-
-interface RootLayoutProps {
+export default function RootLayout({
+  children,
+}: Readonly<{
   children: React.ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+}>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
-      <body className={clsx('bg-gray-950 text-gray-50 p-4', fontFamily.variable)}>{children}</body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }
