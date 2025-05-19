@@ -1,6 +1,0 @@
-{
-  "buildCommand": "npm run pages:build",
-  "installCommand": "npm install",
-  "buildOutputDirectory": ".cloudflare/output/static",
-  "compatibility_flags": ["nodejs_compat"]
-}
