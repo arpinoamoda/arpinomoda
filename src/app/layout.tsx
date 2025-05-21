@@ -6,12 +6,12 @@ export const metadata: Metadata = {
   description:
     'Discover Mina Ely’s luxury style at Arpinomoda. Explore fashion crafted for sophisticated expression.',
   keywords: ['arpinomoda', 'Mina Ely', 'luxury fashion', 'designer apparel', 'modern streetwear'],
-  metadataBase: new URL('https://www.arpinomoda.com'),
+  metadataBase: new URL('https://arpinomoda.com'),
   openGraph: {
     title: 'Arpinomoda – Luxury Apparel by Mina Ely',
     description:
       'Discover Mina Ely’s luxury style at Arpinomoda. Explore fashion crafted for sophisticated expression.',
-    url: 'https://www.arpinomoda.com',
+    url: 'https://arpinomoda.com',
     siteName: 'Arpinomoda',
     images: [
       {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     images: ['/images/bnr-logo.png'],
   },
   alternates: {
-    canonical: 'https://www.arpinomoda.com',
+    canonical: 'https://arpinomoda.com',
   },
 };
 
