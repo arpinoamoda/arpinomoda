@@ -15,8 +15,8 @@ compatibility_flags = ["nodejs_compat"]
 # - https://developers.cloudflare.com/pages/functions/bindings/#environment-variables
 # Note: Use secrets to store sensitive data.
 # - https://developers.cloudflare.com/pages/functions/bindings/#secrets
-[vars]
-SHOPIFY_DOMAIN = "ysznz2-ny.myshopify.com"
+# [vars]
+# Variables are configured in the Cloudflare Dashboard
 
 # Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
 # Docs: https://developers.cloudflare.com/pages/functions/bindings/#workers-ai
