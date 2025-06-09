@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Footer from '@/app/components/footer';
+import Header from '@/app/components/header';
 
 export const metadata: Metadata = {
   title: 'Arpinomoda – Luxury Apparel by Mina Ely',
@@ -44,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="max-w-[2400px] mx-auto overflow-x-hidden">
+        <Header />
         <main className="w-full">{children}</main>
         <Footer />
       </body>

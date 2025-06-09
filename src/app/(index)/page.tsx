@@ -54,7 +54,7 @@ export default function Home() {
       {/* About */}
       <section className="w-full flex flex-col justify-center items-center">
         <div className="text-center px-8 w-full">
-          <div className="max-w-[1000px] mx-auto flex gap-12 my-48">
+          <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row gap-12 my-48">
             <p className="text-left">
               Our story begins with a small olive grove nestled in Arpino, a village in Italy, where
               patience shapes the production of quality goods. With a deep affinity for the groves,
@@ -75,7 +75,7 @@ export default function Home() {
           </div>
         </div>
         <Carousel />
-        <div className="my-12">
+        <div className="my-12 px-8">
           <p>Be the first to discover Arpino’s debut collection.</p>
         </div>
       </section>
@@ -92,7 +92,7 @@ export default function Home() {
             curated just for you.
           </p>
           <div className="max-w-[600px] mx-auto mt-8 flex flex-col sm:flex-row gap-4 text-center justify-center">
-            <Link href="/">Contact Us</Link>
+            <Link href="/contact">Contact Us</Link>
             <Link href="https://www.instagram.com/arpinomoda/">Instagram</Link>
             <Link href="https://www.linkedin.com/company/arpin%C5%8D/">LinkedIn</Link>
             <Link href="/">Media Lounge</Link>

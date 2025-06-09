@@ -4,8 +4,8 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="w-screen border-t border-t-black border-dashed p-8 overflow-hidden">
-      <Link 
-        href="#top" 
+      <Link
+        href="#top"
         onClick={(e) => {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
