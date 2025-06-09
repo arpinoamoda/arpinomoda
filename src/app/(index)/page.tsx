@@ -1,5 +1,6 @@
 'use client';
 import Carousel from '@/app/components/carousel';
+import EmailSubscription from '@/app/components/email-subscription';
 import Image from 'next/image';
 import Link from 'next/link';
 export default function Home() {
@@ -75,8 +76,11 @@ export default function Home() {
           </div>
         </div>
         <Carousel />
-        <div className="my-12 px-8">
+        <div className="mt-24 px-8">
           <p>Be the first to discover Arpino’s debut collection.</p>
+        </div>
+        <div className="w-full mt-8">
+          <EmailSubscription />
         </div>
       </section>
       {/* Contact */}
