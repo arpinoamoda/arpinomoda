@@ -1,4 +1,4 @@
-name = "cloudflare-nextjs-quickstart"
+name = "arpinomoda"
 compatibility_date = "2024-04-04"
 pages_build_output_dir = ".vercel/output/static"
 compatibility_flags = ["nodejs_compat"]
@@ -15,8 +15,8 @@ compatibility_flags = ["nodejs_compat"]
 # - https://developers.cloudflare.com/pages/functions/bindings/#environment-variables
 # Note: Use secrets to store sensitive data.
 # - https://developers.cloudflare.com/pages/functions/bindings/#secrets
-# [vars]
-# MY_VARIABLE = "production_value"
+[vars]
+SHOPIFY_DOMAIN = "ysznz2-ny.myshopify.com"
 
 # Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
 # Docs: https://developers.cloudflare.com/pages/functions/bindings/#workers-ai
