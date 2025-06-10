@@ -1,68 +1,68 @@
-# Cloudflare Next.js Quickstart
+# Arpino Moda Website
 
-This project is a quickstart for starting a Next.js to deploy on Cloudflare Pages.
+This project is a Next.js website deployed on Cloudflare Pages with both Next.js API Routes (for local development) and Cloudflare Pages Functions (for production).
 
-The quickstart includes some defaults for:
+## Development Setup
 
-- Basic Next.js setup with [Tailwind CSS](https://tailwindcss.com/)
-- Deployments to Cloudflare via [GitHub Actions](.github/workflows)
-- Formatting and linting via [Biome](https://biomejs.dev/)
+### Environment Variables
 
-For a more complete using pnpm workspaces and a monorepo with a [Hono](https://hono.dev) API deployed to Cloudflare Workers, check out our [cloudflare-quickstart](https://github.com/gmdotdev/cloudflare-quickstart).
+Create a `.env` file in the root directory with the following variables:
 
-## Getting Started
-
-1. Clone this repository
-
-```bash
-  git clone git@github.com:gmdotdev/cloudflare-nextjs-quickstart.git
+```
+SHOPIFY_DOMAIN=your-shopify-domain
+SHOPIFY_ACCESS_TOKEN=your-shopify-access-token
 ```
 
-2. Install dependencies
+### Local Development
 
 ```bash
-  pnpm install
-```
+# Install dependencies
+npm install
+# or
+pnpm install
 
-3. Start the development server
-
-```bash
+# Start the development server
 npm run dev
 # or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploying to Cloudflare
+## Deployment Architecture
 
-1. Create a new GitHub repository for your project.
+This project uses a dual API setup:
 
-2. Set up the following GitHub repository secrets:
+1. **Local Development**: Uses Next.js API Routes in `src/app/api/`
+2. **Production (Cloudflare)**: Uses Cloudflare Pages Functions in `functions/`
 
-- [`CLOUDFLARE_ACCOUNT_ID`](https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/)
-- [`CLOUDFLARE_API_TOKEN`](https://developers.cloudflare.com/workers/wrangler/ci-cd/#api-token)
+When deploying to Cloudflare, the Pages Functions in the `functions/` directory will be used instead of the Next.js API routes.
 
-3. Create the Cloudflare Pages app with a project name matching that in [build-and-deploy.yml](.github/workflows/build-and-deploy.yml). You can create a new Pages app by:
+## Cloudflare Pages Deployment
 
-- Go to Workers & Pages in Cloudflare
-- Click the Pages tab and then `Upload assets`
-- Type the project name and click `Create Project`, skip the rest
+### Environment Variables
 
-4. Push your repository to GitHub. The GitHub Actions workflow is set to manual trigger by default, so navigate to Actions to run the deploys manually.
+In the Cloudflare Dashboard:
+1. Go to your Pages project
+2. Navigate to Settings > Environment variables
+3. Add the following variables for the Production environment:
+   - `SHOPIFY_DOMAIN`: Your Shopify domain
+   - `SHOPIFY_ACCESS_TOKEN`: Your Shopify access token
 
-### Using Custom Domains
+### Deployment
 
-To use a custom domain with Cloudflare Pages, you can follow the [official documentation](https://developers.cloudflare.com/pages/configuration/custom-domains/).
+Deployments are handled via GitHub Actions or Cloudflare's Git integration. When pushing to the main branch, the site will be automatically deployed.
 
-**Note**: This assumes your domain is already set up in Cloudflare.
+## Troubleshooting
+
+If you're experiencing issues with environment variables in Cloudflare:
+
+1. Check the debug endpoint at `/api/debug` to see what environment variables are available
+2. Verify that the variables are set correctly in the Cloudflare Dashboard
+3. Ensure you've set the variables for the correct environment (Production vs Preview)
 
 ## Links
 
-- [Biome](https://biomejs.dev/)
-- [Cloudflare next-on-pages](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site/)
-- [Next.js](https://nextjs.org)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Cloudflare Pages Functions](https://developers.cloudflare.com/pages/functions/)
+- [Cloudflare Pages Environment Variables](https://developers.cloudflare.com/pages/functions/bindings/#environment-variables)
