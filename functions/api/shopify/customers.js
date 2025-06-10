@@ -87,7 +87,11 @@ export async function onRequest(context) {
         customer: {
           email: email,
           accepts_marketing: true,
-          verified_email: false,
+          verified_email: true,
+          email_marketing_consent: {
+            state: "subscribed",
+            opt_in_level: "single_opt_in"
+          }
         },
       }),
     });
