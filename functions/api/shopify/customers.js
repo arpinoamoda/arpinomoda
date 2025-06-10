@@ -23,12 +23,27 @@ export async function onRequest(context) {
     const shopifyDomain = env.SHOPIFY_DOMAIN;
     const accessToken = env.SHOPIFY_ACCESS_TOKEN;
 
+    // Debug logging
+    console.log('Environment check:', {
+      availableKeys: Object.keys(env),
+      hasDomain: !!shopifyDomain,
+      hasToken: !!accessToken
+    });
+
     if (!shopifyDomain || !accessToken) {
       console.error('Missing environment variables:', {
         domain: !!shopifyDomain,
         token: !!accessToken,
+        allEnvKeys: Object.keys(env)
       });
-      return new Response(JSON.stringify({ error: 'Shopify configuration missing' }), {
+      return new Response(JSON.stringify({ 
+        error: 'Shopify configuration missing',
+        debug: {
+          availableEnvVars: Object.keys(env),
+          hasDomain: !!shopifyDomain,
+          hasToken: !!accessToken
+        }
+      }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
@@ -61,7 +76,7 @@ export async function onRequest(context) {
       });
     }
 
-    const customer = await response.json();
+    await response.json();
     return new Response(JSON.stringify({
       success: true,
       message: 'Successfully subscribed to email list'
