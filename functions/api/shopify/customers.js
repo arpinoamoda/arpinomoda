@@ -1,22 +1,47 @@
 // Cloudflare Pages Function for handling Shopify customer subscriptions
 export async function onRequest(context) {
+  console.log('Function called with method:', context.request.method);
+  
   try {
     const { request, env } = context;
     
+    // Handle CORS preflight
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        status: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
+      });
+    }
+    
     if (request.method !== 'POST') {
+      console.log('Method not allowed:', request.method);
       return new Response(JSON.stringify({ error: 'Method not allowed' }), {
         status: 405,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
       });
     }
 
     const body = await request.json();
     const { email } = body;
+    console.log('Received email:', email);
 
     if (!email) {
+      console.log('No email provided');
       return new Response(JSON.stringify({ error: 'Email is required' }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       });
     }
 
@@ -45,7 +70,10 @@ export async function onRequest(context) {
         }
       }), {
         status: 500,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       });
     }
 
@@ -72,17 +100,24 @@ export async function onRequest(context) {
         details: errorData
       }), {
         status: response.status,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       });
     }
 
     await response.json();
+    console.log('Successfully created customer');
     return new Response(JSON.stringify({
       success: true,
       message: 'Successfully subscribed to email list'
     }), {
       status: 201,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
     });
 
   } catch (error) {
@@ -92,7 +127,10 @@ export async function onRequest(context) {
       message: error.message
     }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
     });
   }
 }
