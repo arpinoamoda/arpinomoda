@@ -34,6 +34,10 @@ export async function onRequest(context) {
     const { email } = body;
     console.log('Received email:', email);
 
+    // Get country from Cloudflare request
+    const country = request.cf?.country;
+    console.log('Detected country:', country);
+
     if (!email) {
       console.log('No email provided');
       return new Response(JSON.stringify({ error: 'Email is required' }), {
@@ -91,7 +95,8 @@ export async function onRequest(context) {
           email_marketing_consent: {
             state: "subscribed",
             opt_in_level: "single_opt_in"
-          }
+          },
+          ...(country && { default_address: { country: country } })
         },
       }),
     });
