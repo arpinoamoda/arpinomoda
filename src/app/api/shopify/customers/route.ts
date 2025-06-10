@@ -10,15 +10,35 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
+    // Get environment variables
     const shopifyDomain = process.env.SHOPIFY_DOMAIN;
     const accessToken = process.env.SHOPIFY_ACCESS_TOKEN;
-
+    
+    // Enhanced error logging for debugging
+    console.log('Environment debug:', {
+      env_keys: Object.keys(process.env).filter(key => !key.startsWith('NEXT_') && !key.startsWith('NODE_')),
+      shopify_domain_exists: typeof shopifyDomain !== 'undefined',
+      access_token_exists: typeof accessToken !== 'undefined'
+    });
+    
     if (!shopifyDomain || !accessToken) {
       console.error('Missing environment variables:', { 
         domain: !!shopifyDomain, 
         token: !!accessToken 
       });
-      return NextResponse.json({ error: 'Shopify configuration missing' }, { status: 500 });
+      
+      // Return more specific error for easier debugging
+      return NextResponse.json({ 
+        error: 'Shopify configuration missing', 
+        details: {
+          missingDomain: !shopifyDomain,
+          missingToken: !accessToken,
+          availableEnvVars: Object.keys(process.env).filter(key => 
+            !key.startsWith('NEXT_') && 
+            !key.startsWith('NODE_')
+          )
+        }
+      }, { status: 500 });
     }
 
     const response = await fetch(`https://${shopifyDomain}/admin/api/2024-01/customers.json`, {
