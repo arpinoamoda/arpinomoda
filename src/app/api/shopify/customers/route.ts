@@ -4,6 +4,26 @@ export const runtime = 'edge';
 
 export async function POST(request: NextRequest) {
   try {
+    // Always respond with debug info for troubleshooting
+    return NextResponse.json({ 
+      error: 'Environment variables debug',
+      debug: {
+        envKeys: Object.keys(process.env).filter(key => 
+          !key.startsWith('NEXT_') && 
+          !key.startsWith('NODE_')
+        ),
+        shopifyDomain: {
+          exists: typeof process.env.SHOPIFY_DOMAIN !== 'undefined',
+          value: process.env.SHOPIFY_DOMAIN ? 'has value' : 'is empty'
+        },
+        shopifyToken: {
+          exists: typeof process.env.SHOPIFY_ACCESS_TOKEN !== 'undefined',
+          value: process.env.SHOPIFY_ACCESS_TOKEN ? 'has value' : 'is empty'
+        }
+      }
+    }, { status: 200 });
+
+    /* Original code commented out for debugging
     const { email } = (await request.json()) as { email: string };
 
     if (!email) {
@@ -14,31 +34,9 @@ export async function POST(request: NextRequest) {
     const shopifyDomain = process.env.SHOPIFY_DOMAIN;
     const accessToken = process.env.SHOPIFY_ACCESS_TOKEN;
     
-    // Enhanced error logging for debugging
-    console.log('Environment debug:', {
-      env_keys: Object.keys(process.env).filter(key => !key.startsWith('NEXT_') && !key.startsWith('NODE_')),
-      shopify_domain_exists: typeof shopifyDomain !== 'undefined',
-      access_token_exists: typeof accessToken !== 'undefined'
-    });
-    
     if (!shopifyDomain || !accessToken) {
-      console.error('Missing environment variables:', { 
-        domain: !!shopifyDomain, 
-        token: !!accessToken 
-      });
-      
-      // Return more specific error for easier debugging
-      return NextResponse.json({ 
-        error: 'Shopify configuration missing', 
-        details: {
-          missingDomain: !shopifyDomain,
-          missingToken: !accessToken,
-          availableEnvVars: Object.keys(process.env).filter(key => 
-            !key.startsWith('NEXT_') && 
-            !key.startsWith('NODE_')
-          )
-        }
-      }, { status: 500 });
+      console.error('Missing environment variables');
+      return NextResponse.json({ error: 'Shopify configuration missing' }, { status: 500 });
     }
 
     const response = await fetch(`https://${shopifyDomain}/admin/api/2024-01/customers.json`, {
@@ -55,6 +53,7 @@ export async function POST(request: NextRequest) {
         },
       }),
     });
+    
     if (!response.ok) {
       const errorData = await response.json();
       console.error('Shopify API error:', errorData);
@@ -63,11 +62,13 @@ export async function POST(request: NextRequest) {
         { status: response.status },
       );
     }
+    
     const customer = await response.json();
     return NextResponse.json(
       { success: true, message: 'Successfully subscribed to email list' },
       { status: 201 },
     );
+    */
   } catch (error) {
     console.error('Error subscribing to email list:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
