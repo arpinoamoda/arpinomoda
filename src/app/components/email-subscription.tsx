@@ -11,18 +11,25 @@ export default function EmailSubscription({ className = '' }: EmailSubscriptionP
   const [message, setMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const getCountryCode = (): string => {
+    return 'CA'; // Default to Canada
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setMessage('');
 
     try {
+      const country = getCountryCode();
+      console.log('Sending country: Canada (CA)');
+
       const response = await fetch('/api/shopify/customers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, country }),
       });
 
       const data = (await response.json()) as { error?: string; message?: string };
