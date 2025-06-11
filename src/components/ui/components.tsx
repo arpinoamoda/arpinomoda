@@ -5,7 +5,7 @@ import * as React from 'react';
 const sectionVariants = cva('block', {
   variants: {
     variant: {
-      default: 'min-h-screen w-full flex justify-center items-center',
+      default: 'min-h-screen w-full flex justify-center items-center pt-[60px]',
     },
     size: {
       default: '',

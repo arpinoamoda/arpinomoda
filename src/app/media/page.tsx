@@ -1,4 +1,5 @@
 'use client';
+import { Section, SectionInner } from '@/components/ui/components';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -55,21 +56,21 @@ export default function Media() {
 
   if (loading) {
     return (
-      <section className="min-h-screen w-full flex justify-center items-center">
-        <div className="text-center p-8 w-full">
+      <Section>
+        <SectionInner>
           <div className="animate-pulse">Loading blog posts...</div>
-        </div>
-      </section>
+        </SectionInner>
+      </Section>
     );
   }
 
   if (error) {
     return (
-      <section className="min-h-screen w-full flex justify-center items-center">
-        <div className="text-center p-8 w-full">
+      <Section>
+        <SectionInner>
           <div className="text-red-500">Error: {error}</div>
-        </div>
-      </section>
+        </SectionInner>
+      </Section>
     );
   }
 
@@ -78,9 +79,9 @@ export default function Media() {
     .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime());
 
   return (
-    <>
-      <section className="min-h-screen w-full flex justify-center items-center">
-        <div className="text-center p-8 w-full max-w-[1800px] mx-auto">
+    <Section>
+      <SectionInner>
+        <div className="max-w-[1200px] mx-auto">
           {allArticles.length === 0 ? (
             <div className="text-center text-gray-500">No blog posts found.</div>
           ) : (
@@ -133,7 +134,7 @@ export default function Media() {
             </div>
           )}
         </div>
-      </section>
-    </>
+      </SectionInner>
+    </Section>
   );
 }
