@@ -1,7 +1,7 @@
 name = "arpinomoda"
 compatibility_date = "2024-04-04"
 # Next.js output directory for static assets
-pages_build_output_dir = "out"
+# pages_build_output_dir = "out"  # Commented out for dev mode
 # Enable Node.js compatibility
 compatibility_flags = ["nodejs_compat"]
 
