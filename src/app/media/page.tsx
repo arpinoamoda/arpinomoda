@@ -6,10 +6,7 @@ export default function Home() {
   return (
     <>
       <section className="min-h-screen w-full flex justify-center items-center">
-        <div className="text-center p-8 w-full">
-          <h1 className="mb-4">Media</h1>
-          <p className="max-w-[600px] mx-auto">Media</p>
-        </div>
+        <div className="text-center p-8 w-full">hello</div>
       </section>
     </>
   );

@@ -99,7 +99,7 @@ export default function Home() {
             <Link href="/contact">Contact Us</Link>
             <Link href="https://www.instagram.com/arpinomoda/">Instagram</Link>
             <Link href="https://www.linkedin.com/company/arpin%C5%8D/">LinkedIn</Link>
-            <Link href="/">Media Lounge</Link>
+            <Link href="/media">Media Lounge</Link>
           </div>
         </div>
       </section>

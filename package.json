@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm run build && wrangler pages dev out --compatibility-date=2024-04-04",
+    "dev": "next dev",
+    "dev-shop": "npm run build && wrangler pages dev out --compatibility-date=2024-04-04",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
