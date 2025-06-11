@@ -12,18 +12,30 @@ export default function EmailSubscription({ className = '' }: EmailSubscriptionP
   const [isSuccess, setIsSuccess] = useState(false);
 
   const getCountryCode = (): string => {
-    return 'CA'; // Default to Canada
+    try {
+      // Try to get country from browser locale (e.g., "en-US" → "US")
+      const locale: string = Intl.DateTimeFormat().resolvedOptions().locale;
+      if (locale?.includes('-')) {
+        return locale.split('-')[1];
+      }
+      // Fallback to navigator.language (e.g., "en-US" → "US")
+      if (navigator.language?.includes('-')) {
+        return navigator.language.split('-')[1];
+      }
+      // Default fallback
+      return 'US';
+    } catch (error) {
+      console.warn('Could not detect country, using default:', error);
+      return 'US';
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setMessage('');
-
     try {
       const country = getCountryCode();
-      console.log('Sending country: Canada (CA)');
-
       const response = await fetch('/api/shopify/customers', {
         method: 'POST',
         headers: {

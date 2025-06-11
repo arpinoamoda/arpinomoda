@@ -81,16 +81,29 @@ export async function onRequest(context) {
       );
     }
 
-    // Convert country code to full country name for Shopify
-    const getCountryName = (countryCode) => {
+    // Convert country code to country name for Shopify
+    const getCountryName = (code) => {
       const countryMap = {
-        CA: 'Canada',
-        US: 'United States',
-        GB: 'United Kingdom',
-        AU: 'Australia',
-        // Add more as needed
+        'US': 'United States',
+        'CA': 'Canada',
+        'GB': 'United Kingdom',
+        'AU': 'Australia',
+        'DE': 'Germany',
+        'FR': 'France',
+        'IT': 'Italy',
+        'ES': 'Spain',
+        'NL': 'Netherlands',
+        'JP': 'Japan',
+        'CN': 'China',
+        'IN': 'India',
+        'BR': 'Brazil',
+        'MX': 'Mexico',
+        'SE': 'Sweden',
+        'NO': 'Norway',
+        'DK': 'Denmark',
+        'FI': 'Finland'
       };
-      return countryMap[countryCode] || 'Canada'; // Default to Canada
+      return countryMap[code] || 'United States';
     };
 
     const countryName = getCountryName(country);
