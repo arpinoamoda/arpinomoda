@@ -1,3 +1,4 @@
+import parse from 'html-react-parser';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,6 +13,7 @@ interface Article {
   published_at: string;
   tags: string;
   handle: string;
+  body_html: string; // Added this property
   image?: {
     alt: string;
     src: string;
@@ -154,6 +156,11 @@ export default async function ArticleDetail({ params }: { params: { handle: stri
       </section>
     );
   }
+
+  // Fixed console.log statements
+  console.log('Full article object:', article);
+  console.log('Article body HTML:', article.body_html);
+
   return (
     <section className="min-h-screen w-full flex flex-col justify-center items-center p-8 max-w-[800px] mx-auto">
       <div className="mb-4 text-left w-full px-2">
@@ -187,6 +194,9 @@ export default async function ArticleDetail({ params }: { params: { handle: stri
             {article.author && <span>By {article.author}</span>}
           </div>
         </header>
+
+        {/* Article content */}
+        <div className="prose-content mt-4">{parse(article.body_html)}</div>
       </article>
     </section>
   );

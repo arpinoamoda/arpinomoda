@@ -106,3 +106,11 @@ h2 {
     @apply bg-background text-foreground;
   }
 }
+
+.prose-content p {
+  padding-bottom: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
