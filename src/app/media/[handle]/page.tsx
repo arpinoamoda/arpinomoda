@@ -194,7 +194,6 @@ export default async function ArticleDetail({ params }: { params: { handle: stri
             {article.author && <span>By {article.author}</span>}
           </div>
         </header>
-
         {/* Article content */}
         <div className="prose-content mt-4">{parse(article.body_html)}</div>
       </article>
