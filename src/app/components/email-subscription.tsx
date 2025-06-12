@@ -74,6 +74,7 @@ export default function EmailSubscription({ className = '' }: EmailSubscriptionP
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
           required
+          aria-label="Email Input Form"
           className="border border-black w-full p-4 pr-12 focus:outline-none focus:ring-0 focus:border-black bg-transparent"
         />
         <button
