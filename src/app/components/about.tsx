@@ -7,7 +7,8 @@ export default function About() {
       {/* Launching... */}
       <Section>
         <SectionInner>
-          <h1 className="mb-4">Launching Soon...</h1>
+          <h1 className="h1">Arpinomoda – Luxury Fashion by Mina Ely</h1>
+          <h2 className="mb-4">Launching Soon...</h2>
           <p className="max-w-[600px] mx-auto">
             Arpinō is a timeless expression of bespoke luxury, sophisticated style, and Italian
             craftsmanship. We believe luxury is not just worn, but lived— to be experienced and

@@ -90,8 +90,9 @@ html {
   font-family: 'Baskervville', serif;
 }
 h1 {
-  font-family: 'Monsieur', serif;
-  font-size: clamp(0rem, 10vw, 10rem);
+  /* font-family: 'Monsieur', serif;
+  font-size: clamp(0rem, 10vw, 10rem); */
+  font-family: 'Baskervville', serif;
 }
 h2 {
   font-family: 'Monsieur', serif;
