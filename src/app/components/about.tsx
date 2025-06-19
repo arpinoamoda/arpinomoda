@@ -1,18 +1,26 @@
 import Carousel from '@/app/components/carousel';
 import EmailSubscription from '@/app/components/email-subscription';
 import { Section, SectionInner } from '@/components/ui/components';
+import Link from 'next/link';
 export default function About() {
   return (
     <>
-      {/* Launching... */}
       <Section>
         <SectionInner>
           <h1 className="h1">Arpinomoda – Luxury Fashion by Mina Ely</h1>
-          <h2 className="mb-4">Launching Soon...</h2>
+          <h2 className="mb-4">From Italy, With Intention</h2>
           <p className="max-w-[600px] mx-auto">
             Arpinō is a timeless expression of bespoke luxury, sophisticated style, and Italian
             craftsmanship. We believe luxury is not just worn, but lived— to be experienced and
             cherished for years to come.
+          </p>
+          <p className="max-w-[600px] mx-auto mt-4">
+            <Link
+              href="/pdfs/Arpino_SS25_Lookbook.pdf"
+              target="_blank"
+            >
+              Discover the SS25 collection
+            </Link>
           </p>
         </SectionInner>
       </Section>
