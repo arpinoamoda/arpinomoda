@@ -16,7 +16,7 @@ export default function About() {
           </p>
           <p className="max-w-[600px] mx-auto mt-4">
             <Link
-              href="/pdfs/Arpino_SS25_Lookbook.pdf"
+              href="https://github.com/arpinoamoda/arpinomoda/raw/7a7fab4197f33b26afd42ffed22ca3c807299a9e/public/pdfs/Arpino_SS25_Lookbook.pdf"
               target="_blank"
             >
               Discover the SS25 collection
